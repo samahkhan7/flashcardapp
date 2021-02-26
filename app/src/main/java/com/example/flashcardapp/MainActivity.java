@@ -21,5 +21,12 @@ public class MainActivity extends AppCompatActivity {
                 cardAnswer.setVisibility(View.VISIBLE);
             }
         });
+        cardAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardAnswer.setVisibility(View.INVISIBLE);
+                cardQuestion.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
