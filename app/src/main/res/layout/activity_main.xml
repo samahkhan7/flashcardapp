@@ -14,9 +14,10 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="Who is the 44th President of the United States?"
-        android:background="@color/bluesapphire"
+        android:background="@drawable/card_front_background"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
         />
 
     <TextView
@@ -27,9 +28,10 @@
         android:gravity="center"
         android:text="Barack Obama"
         android:visibility="invisible"
-        android:background="@color/blackcoffee"
+        android:background="@drawable/card_back_background"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
         />
 
 </RelativeLayout
