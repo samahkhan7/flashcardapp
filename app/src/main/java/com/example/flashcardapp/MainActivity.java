@@ -3,6 +3,7 @@ package com.example.flashcardapp;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.media.Image;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     // boolean for icon visibility
     boolean isShowingAnswer;
+    boolean isShowingPlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,14 +93,22 @@ public class MainActivity extends AppCompatActivity {
                     choiceTwo.setVisibility(View.INVISIBLE);
                     choiceThree.setVisibility(View.INVISIBLE);
                     toggleEye.setImageResource(R.drawable.visible_eye);
-                }
-                else {
+                } else {
                     choiceOne.setVisibility(View.VISIBLE);
                     choiceTwo.setVisibility(View.VISIBLE);
                     choiceThree.setVisibility(View.VISIBLE);
                     toggleEye.setImageResource(R.drawable.hidden_eye);
                 }
-               isShowingAnswer = !isShowingAnswer;
+                isShowingAnswer = !isShowingAnswer;
+            }
+        });
+
+        // the user is taken to AddCardActivity when the plus button is clicked
+        findViewById(R.id.plusButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
     }
