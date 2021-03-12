@@ -17,4 +17,20 @@
         android:layout_margin="20dp"
         />
 
+    <EditText
+        android:id="@+id/enterQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:hint="Enter the question here"
+        />
+
+    <EditText
+        android:id="@+id/enterAnswer"
+        android:layout_below="@id/enterQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:hint="Enter the answer here"
+        />
 </RelativeLayout>
