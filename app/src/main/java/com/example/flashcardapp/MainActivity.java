@@ -14,6 +14,8 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     // boolean for icon visibility
@@ -109,19 +111,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
-                //TEST?
-                // intent.putExtra("key", "some info to send");
-                MainActivity.this.startActivityForResult(intent, 100);
+                MainActivity.this.startActivityForResult(intent, 1);
+
+                cardQuestion.getText().toString();
+                cardAnswer.getText().toString();
             }
         });
+
+
     }
 
+    // data from AddCardActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && data != null) {
+        if (requestCode == 1 && data != null) {
             String question0 = data.getExtras().getString("userQuestion");
             String answer1 = data.getExtras().getString("userAnswer");
+
+            TextView cardQ = findViewById(R.id.flashcardQuestion);
+            TextView cardA = findViewById(R.id.flashcardAnswer);
+
+            // changes what appears on the flashcard question and answer sides
+            cardQ.setText(question0);
+            cardA.setText(answer1);
         }
     }
 }
