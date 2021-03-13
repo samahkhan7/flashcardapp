@@ -1,6 +1,7 @@
 package com.example.flashcardapp;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -108,8 +109,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
-                MainActivity.this.startActivity(intent);
+                //TEST?
+                // intent.putExtra("key", "some info to send");
+                MainActivity.this.startActivityForResult(intent, 100);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && data != null) {
+            String question0 = data.getExtras().getString("userQuestion");
+            String answer1 = data.getExtras().getString("userAnswer");
+        }
     }
 }
