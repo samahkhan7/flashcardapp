@@ -16,16 +16,28 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     // boolean for icon visibility
     boolean isShowingAnswer;
     boolean isShowingPlus;
 
+    // flashcard database variable declared
+    FlashcardDatabase flashcardDatabase;
+    // variable to hold a list of flashcards declared
+    List<Flashcard> allFlashcards;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // initialize the flashcardDatabase variable
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        // access saved flashcards
+        allFlashcards = flashcardDatabase.getAllCards();
 
         TextView cardQuestion = findViewById(R.id.flashcardQuestion);
         TextView cardAnswer = findViewById(R.id.flashcardAnswer);
@@ -117,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 cardAnswer.getText().toString();
             }
         });
-
-
     }
 
     // data from AddCardActivity
@@ -135,6 +145,11 @@ public class MainActivity extends AppCompatActivity {
             // changes what appears on the flashcard question and answer sides
             cardQ.setText(question0);
             cardA.setText(answer1);
+
+            // saves the flashcard question and answer to database
+            flashcardDatabase.insertCard(new Flashcard(question0, answer1));
+            // update variable holding list of flashcards
+            allFlashcards = flashcardDatabase.getAllCards();
         }
     }
 }
