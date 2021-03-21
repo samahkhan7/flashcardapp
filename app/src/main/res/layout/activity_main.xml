@@ -18,7 +18,8 @@
         android:text="Who is the 44th President of the United States?"
         android:background="@drawable/card_front_background"
         android:textColor="@color/white"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         android:elevation="10dp"
         />
 
@@ -40,9 +41,10 @@
         android:id="@+id/multiplechoiceOne"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@id/flashcardQuestion"
+        android:layout_below="@id/nextButton"
         android:background="@color/bluesapphire"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="10dp"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="35sp"
@@ -56,7 +58,8 @@
         android:layout_height="80dp"
         android:layout_below="@id/multiplechoiceOne"
         android:background="@color/bluesapphire"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="10dp"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="35sp"
@@ -70,7 +73,8 @@
         android:layout_height="80dp"
         android:layout_below="@id/multiplechoiceTwo"
         android:background="@color/bluesapphire"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="10dp"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="35sp"
@@ -95,9 +99,17 @@
         android:src="@drawable/plus_button"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
         />
 
-
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:id="@+id/nextButton"
+        android:src="@drawable/next_button"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/flashcardQuestion"
+        />
 
 </RelativeLayout>
