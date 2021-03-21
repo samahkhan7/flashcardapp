@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     // boolean for icon visibility
     boolean isShowingAnswer;
-    boolean isShowingPlus;
 
     // flashcard database variable declared
     FlashcardDatabase flashcardDatabase;
@@ -34,13 +33,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // initialize the flashcardDatabase variable
-        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
-        // access saved flashcards
-        allFlashcards = flashcardDatabase.getAllCards();
-
+        // declares flashcard question and answer sides as text views
         TextView cardQuestion = findViewById(R.id.flashcardQuestion);
         TextView cardAnswer = findViewById(R.id.flashcardAnswer);
+
+
+        // initialize the flashcardDatabase variable
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        // displays the first card at index 0
+        Flashcard flashcard = flashcardDatabase.getAllCards().get(0);
+        String question = flashcard.getQuestion();
+        cardQuestion.setText(question);
+        String answer = flashcard.getAnswer();
+        cardAnswer.setText(answer);
+
+        // access saved flashcards
+        allFlashcards = flashcardDatabase.getAllCards();
 
         // user can toggle between the front and back of the question card by clicking on it
         cardQuestion.setOnClickListener(new View.OnClickListener() {
