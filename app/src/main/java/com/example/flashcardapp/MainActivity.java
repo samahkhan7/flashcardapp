@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     // flashcard database variable declared
     FlashcardDatabase flashcardDatabase;
+    // initialize flashcard tracking variable
+    int currentCard = -1;
     // variable to hold a list of flashcards declared
     List<Flashcard> allFlashcards;
 
@@ -41,14 +43,43 @@ public class MainActivity extends AppCompatActivity {
         // initialize the flashcardDatabase variable
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         // displays the first card at index 0
-        Flashcard flashcard = flashcardDatabase.getAllCards().get(0);
-        String question = flashcard.getQuestion();
-        cardQuestion.setText(question);
-        String answer = flashcard.getAnswer();
-        cardAnswer.setText(answer);
+        if(flashcardDatabase.getAllCards().size() > 0) {
+            currentCard = 0;
+            Flashcard flashcard = flashcardDatabase.getAllCards().get(currentCard);
+            String question = flashcard.getQuestion();
+            cardQuestion.setText(question);
+            String answer = flashcard.getAnswer();
+            cardAnswer.setText(answer);
+        }
 
-        // access saved flashcards
-        allFlashcards = flashcardDatabase.getAllCards();
+
+
+        findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // show question side first when next button is clicked
+                cardQuestion.setVisibility(View.VISIBLE);
+                findViewById(R.id.flashcardAnswer).setVisibility(View.INVISIBLE);
+
+                // doesn't go to next card if there are no cards at start
+                // if (allFlashcards.size() == 0)
+                //    return;
+                // advance index to show next card
+                currentCard++;
+
+                // avoid IndexOutOfBoundsError
+                if(currentCard >= flashcardDatabase.getAllCards().size()) {
+                    currentCard = 0;
+                }
+
+                // access saved flashcards
+                allFlashcards = flashcardDatabase.getAllCards();
+                Flashcard flashcard = allFlashcards.get(currentCard);
+                // set question and answer TextViews with data from the database
+                cardQuestion.setText(flashcard.getQuestion());
+                cardAnswer.setText(flashcard.getAnswer());
+            }
+        });
 
         // user can toggle between the front and back of the question card by clicking on it
         cardQuestion.setOnClickListener(new View.OnClickListener() {
