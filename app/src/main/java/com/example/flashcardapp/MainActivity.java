@@ -4,12 +4,16 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -85,10 +89,28 @@ public class MainActivity extends AppCompatActivity {
         cardQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // code to animate question reveal
+
+                // get the center for the clipping circle
+                int cx = cardAnswer.getWidth() / 2;
+                int cy = cardAnswer.getHeight() / 2;
+
+                // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(cardAnswer, cx, cy, 0f, finalRadius);
+
+                // hide the question and show the answer to prepare for playing the animation!
                 cardQuestion.setVisibility(View.INVISIBLE);
                 cardAnswer.setVisibility(View.VISIBLE);
+
+                anim.setDuration(3000);
+                anim.start();
             }
         });
+
         cardAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,10 +186,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
                 MainActivity.this.startActivityForResult(intent, 1);
 
+                // sets animation to be played when the plus button is clicked
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+
                 cardQuestion.getText().toString();
                 cardAnswer.getText().toString();
             }
         });
+
+
+
+
     }
 
     // data from AddCardActivity
