@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightblueish"
     tools:context=".AddCardActivity">
 
     <ImageView
@@ -31,7 +32,8 @@
         android:id="@+id/enterQuestion"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
+        android:textColor="@color/bluesapphire"
         android:hint="Enter the question here"
         android:inputType="textMultiLine"
         />
@@ -41,8 +43,9 @@
         android:layout_below="@id/enterQuestion"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:hint="Enter the answer here"
+        android:textColor="@color/bluesapphire"
         android:inputType="textMultiLine"
         />
 </RelativeLayout>

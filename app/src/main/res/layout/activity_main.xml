@@ -6,6 +6,7 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightblueish"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,8 +18,8 @@
         android:padding="10dp"
         android:text="Who is the 44th President of the United States?"
         android:background="@drawable/card_front_background"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
+        android:textColor="@color/bluesapphire"
+        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="10dp"
         android:elevation="10dp"
         />
@@ -32,8 +33,9 @@
         android:text="Barack Obama"
         android:visibility="invisible"
         android:background="@drawable/card_back_background"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
+        android:textColor="@color/bluesapphire"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
         android:elevation="10dp"
         />
 
@@ -42,14 +44,14 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@id/nextButton"
-        android:background="@color/bluesapphire"
+        android:background="@color/yellowish"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="10dp"
-        android:textColor="@color/white"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/bluesapphire"
         android:gravity="center"
         android:textSize="35sp"
         android:elevation="10dp"
-        android:text="Bill Clinton"
+        android:text=""
         />
 
     <TextView
@@ -57,14 +59,14 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@id/multiplechoiceOne"
-        android:background="@color/bluesapphire"
+        android:background="@color/yellowish"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="10dp"
-        android:textColor="@color/white"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/bluesapphire"
         android:gravity="center"
         android:textSize="35sp"
         android:elevation="10dp"
-        android:text="Barack Obama"
+        android:text=""
         />
 
     <TextView
@@ -72,14 +74,14 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@id/multiplechoiceTwo"
-        android:background="@color/bluesapphire"
+        android:background="@color/yellowish"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="10dp"
-        android:textColor="@color/white"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/bluesapphire"
         android:gravity="center"
         android:textSize="35sp"
         android:elevation="10dp"
-        android:text="Teddy Roosevelt"
+        android:text=""
         />
 
     <ImageView

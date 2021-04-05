@@ -61,27 +61,54 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // show question side first when next button is clicked
-                cardQuestion.setVisibility(View.VISIBLE);
-                findViewById(R.id.flashcardAnswer).setVisibility(View.INVISIBLE);
+                final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
+                final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
 
-                // doesn't go to next card if there are no cards at start
-                // if (allFlashcards.size() == 0)
-                //    return;
-                // advance index to show next card
-                currentCard++;
-
-                // avoid IndexOutOfBoundsError
-                if(currentCard >= flashcardDatabase.getAllCards().size()) {
-                    currentCard = 0;
+                if(allFlashcards.size() == 0){
+                    return;
                 }
 
-                // access saved flashcards
-                allFlashcards = flashcardDatabase.getAllCards();
-                Flashcard flashcard = allFlashcards.get(currentCard);
-                // set question and answer TextViews with data from the database
-                cardQuestion.setText(flashcard.getQuestion());
-                cardAnswer.setText(flashcard.getAnswer());
+                // advance index to show the next card
+                currentCard++;
+
+                // performs left_out animation
+                //cardQuestion.startAnimation(leftOutAnim);
+                if((cardQuestion).getVisibility() != View.VISIBLE) {
+                    cardAnswer.startAnimation(leftOutAnim);
+                } else {
+                    cardQuestion.startAnimation(leftOutAnim);
+                }
+
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
+                        cardQuestion.startAnimation(rightInAnim);
+
+                        // avoid IndexOutOfBoundsError
+                        if(currentCard >= flashcardDatabase.getAllCards().size()) {
+                            currentCard = 0;
+                        }
+
+                        // access saved flashcards
+                        allFlashcards = flashcardDatabase.getAllCards();
+                        Flashcard flashcard = allFlashcards.get(currentCard);
+
+                        // set question and answer TextViews with data from the database
+                        cardQuestion.setText(flashcard.getQuestion());
+                        cardAnswer.setText(flashcard.getAnswer());
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
             }
         });
 
@@ -106,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 cardQuestion.setVisibility(View.INVISIBLE);
                 cardAnswer.setVisibility(View.VISIBLE);
 
-                anim.setDuration(3000);
+                anim.setDuration(1000);
                 anim.start();
             }
         });

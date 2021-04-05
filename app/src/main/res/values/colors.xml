@@ -11,4 +11,11 @@
     <color name="bluesapphire">#326273</color>
     <color name="barnred">#95190C</color>
     <color name="blackcoffee">#2D2327</color>
+
+    <color name="blueish">#41d8ca</color>
+    <color name="lightblueish">#c7e3e5</color>
+    <color name="yellowish">#f4f3d4</color>
+    <color name="orangeish">#f9d7c5</color>
+    <color name="pinkish">#f4a2a9</color>
+
 </resources>
